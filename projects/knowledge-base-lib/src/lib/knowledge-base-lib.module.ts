@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { KnowledgeBaseLibComponent } from './knowledge-base-lib.component';
-import { BaseComponent } from './Components/base/base.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ModalBaseConocimientoComponent } from './Components/modal-base-conocimiento/modal-base-conocimiento.component';
+import { BotonBaseConocimientoComponent } from './Components/boton-base-conocimiento/boton-base-conocimiento.component';
 
 @NgModule({
-  declarations: [KnowledgeBaseLibComponent, BaseComponent],
+  declarations: [
+    KnowledgeBaseLibComponent,
+    ModalBaseConocimientoComponent,
+    BotonBaseConocimientoComponent],
   imports: [
     BrowserModule,
     FormsModule
@@ -14,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   exports: [
     KnowledgeBaseLibComponent,
     HttpClientModule,
-    BaseComponent
+    ModalBaseConocimientoComponent,
+    BotonBaseConocimientoComponent
   ]
 })
 export class KnowledgeBaseLibModule { }

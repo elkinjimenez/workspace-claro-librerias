@@ -1,9 +1,0 @@
-<h2>Base de conocimiento de <strong>{{nomFlujo | lowercase}}</strong> | Modal</h2>
-<button (click)="seleccionarGuion(valorGuion)">Solo mostrar guión: </button>
-<input type="text" [(ngModel)]="valorGuion">
-<ul>
-  <li *ngFor="let g of listadoGuiones">
-    <!-- <h4 style="margin: 0px;">{{g.NAME_KNOWLEDGE}}</h4> -->
-    <h3 style="margin: 0px 0px 16px 0px;">{{g.VALUE_KNOWLEDGE}}</h3>
-  </li>
-</ul>
