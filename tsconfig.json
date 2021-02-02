@@ -12,6 +12,23 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/knowledge-base-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/knowledge-base-lib/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ws-soap-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ws-soap-lib/tsconfig.spec.json"
     }
-]
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": false
+  }
 }

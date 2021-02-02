@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KnowledgeBaseLibService } from 'knowledge-base-lib';
 
 @Component({
   selector: 'ld-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'workspace-claro';
+
+  constructor(
+    // private base: KnowledgeBaseLibService,
+  ) { }
+
 }
