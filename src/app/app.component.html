@@ -1,4 +1,8 @@
 <h1>Librerías</h1>
 <hr>
 <!-- <app-base></app-base> -->
-<lib-knowledge-base-lib [nameFunctionality]="'AJUSTES'" [nameProcess]="'BASECONOCIMIENTOAJUSTES'"></lib-knowledge-base-lib>
+<lib-knowledge-base-lib [showButton]="true" [nameFunctionality]="'AJUSTES'" [nameProcess]="'BASECONOCIMIENTOAJUSTES'">
+</lib-knowledge-base-lib>
+<button (click)="servicioBase.openKnowledgeBaseModal()">Lanzar modal</button>
+<button (click)="servicioBase.searchByNameScript('PROCEDENTE', true)">Un solo guión</button>
+<button (click)="servicioBase.resetListScripts(true)">Reiniciar guiones</button>

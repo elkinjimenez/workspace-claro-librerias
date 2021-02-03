@@ -25,5 +25,10 @@
     {
       "path": "./projects/ws-soap-lib/tsconfig.spec.json"
     }
-]
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": false
+  }
 }

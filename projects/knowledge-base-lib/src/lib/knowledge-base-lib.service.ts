@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { RespBase } from './Interfaces/resp-base';
+import { ModalBaseConocimientoComponent } from './modal-base-conocimiento/modal-base-conocimiento.component';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class KnowledgeBaseLibService {
 
   constructor(
     private http: HttpClient,
+    public dialog: MatDialog,
   ) { }
 
   postBaseConocimiento(nombreFlujo: string, nombreProceso: string) {
@@ -39,11 +42,30 @@ export class KnowledgeBaseLibService {
     );
   }
 
-  seleccionarGuion(nameGuion: string): void {
+  searchByNameScript(nameScript: string, showModal: boolean): void {
     const guiones = this.responseKnowledgeBase.filter(
-      guion => guion.NAME_KNOWLEDGE == nameGuion
+      guion => guion.NAME_KNOWLEDGE == nameScript
     )
     this.listScripts = guiones;
+    console.log('Solo el guión: ', this.listScripts);
+    if (showModal) {
+      this.openKnowledgeBaseModal();
+    }
+  }
+
+  openKnowledgeBaseModal() {
+    const dialogRef = this.dialog.open(ModalBaseConocimientoComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  resetListScripts(showModal: boolean) {
+    this.listScripts = this.responseKnowledgeBase;
+    console.log('Guiones reiniciados...');
+    if (showModal) {
+      this.openKnowledgeBaseModal();
+    }
   }
 
 }

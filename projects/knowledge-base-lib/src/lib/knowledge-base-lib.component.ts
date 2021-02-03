@@ -5,30 +5,25 @@ import { ModalBaseConocimientoComponent } from './modal-base-conocimiento/modal-
 
 @Component({
   selector: 'lib-knowledge-base-lib',
-  template: '<button (click)="openKnowledgeBaseModal()">Base de conocimiento</button>',
+  template: `
+  <button *ngIf="showButton" (click)="servicio.openKnowledgeBaseModal()">Base de conocimiento</button>
+  `,
   styles: [
   ]
 })
 export class KnowledgeBaseLibComponent implements OnInit {
 
+  @Input() showButton: boolean = false;
   @Input() nameFunctionality: string = '';
   @Input() nameProcess: string = '';
 
   constructor(
-    public dialog: MatDialog,
     public servicio: KnowledgeBaseLibService
   ) { }
 
   ngOnInit(): void {
     console.log('Base de conocimiento | Librería.\nFuncionalidad: ', this.nameFunctionality, '\nProceso: ', this.nameProcess);
     this.servicio.consumirBaseConocimiento(this.nameFunctionality, this.nameProcess);
-  }
-
-  openKnowledgeBaseModal() {
-    const dialogRef = this.dialog.open(ModalBaseConocimientoComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
 }
