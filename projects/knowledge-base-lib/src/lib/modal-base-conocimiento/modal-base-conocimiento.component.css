@@ -1,0 +1,32 @@
+.btn-danger{
+  background-color: #ef3829;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b7202e;
+  color: white;
+}
+
+.btn-success{
+  color: white;
+  background-color: #008000;
+}
+
+.btn-success:hover{
+  color: white;
+  background-color: #016901;
+}
+
+.btn-peque {
+  padding: 0px;
+  height:22px;
+  font-size: 12px !important;
+  line-height: normal;
+}
+
+.mensaje-servicio {
+  text-align: center;
+  font-weight: bold;
+  color: gray;
+}

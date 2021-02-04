@@ -14,14 +14,4 @@ export class ModalBaseConocimientoComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  cancelar() {
-    console.log('Modal base de conocimiento cerrado.');
-    return false;
-  }
-
-  confirmar() {
-    console.log('Confirmado base de conocimiento.');
-    return true;
-  }
-
 }
