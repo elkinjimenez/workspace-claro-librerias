@@ -1,14 +1,16 @@
 <h2 mat-dialog-title>Base de conocimiento para <strong>{{servicio.nameFlow | lowercase}}</strong>.</h2>
 <hr style="margin-bottom: 20px;">
 <mat-dialog-content class="mat-typography">
-  <div *ngIf="servicio.confirmKnowledge === true">
-    <li *ngFor="let g of servicio.listScripts" style="margin-bottom: 20px;">
-      <span style="font-size: 1.3em;">{{g.VALUE_KNOWLEDGE}}</span>
-    </li>
+  <div *ngIf="servicio.confirmKnowledge">
+    <div *ngFor="let g of servicio.listScripts" style="margin-bottom: 20px;">
+     <h3 style="font-weight: bold">{{g.NAME_KNOWLEDGE}}</h3>
+     <h4 style="text-align: justify;">{{g.VALUE_KNOWLEDGE}}</h4>
+    </div>
   </div>
   <div *ngIf="!servicio.confirmKnowledge">
     <h3 class="mensaje-servicio">{{servicio.messageError}}</h3>
-    <mat-progress-bar [color]="'warn'" *ngIf="servicio.messageError.indexOf('Cargando base de conocimiento') != -1" mode="indeterminate">
+    <mat-progress-bar [color]="'warn'" *ngIf="servicio.messageError.indexOf('Cargando base de conocimiento') != -1"
+      mode="indeterminate">
     </mat-progress-bar>
   </div>
 </mat-dialog-content>

@@ -94,7 +94,7 @@ export class KnowledgeBaseLibService {
       console.log('Solo el guión: ', this.listScripts);
     } else {
       this.confirmKnowledge = false;
-      this.messageError = 'No se encontraron guiones con el ID enviado.';
+      this.messageError = 'No se encontraron guiones con el ID a consultar.';
     }
   }
 
