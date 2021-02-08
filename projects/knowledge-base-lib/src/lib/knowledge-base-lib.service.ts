@@ -59,6 +59,7 @@ export class KnowledgeBaseLibService {
       try {
         const dialogRef = this.dialog.open(ModalBaseConocimientoComponent, {
           disableClose: true,
+          autoFocus: false,
         });
         dialogRef.afterClosed().subscribe(result => {
           // console.log(`Respuesta base de conocimiento: ${result}`);

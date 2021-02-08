@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { KnowledgeBaseLibService } from 'knowledge-base-lib';
 
@@ -35,6 +34,11 @@ export class AppComponent {
 
   buscarPorId() {
     this.servicioBase.searchByIdScript(420);
+    this.lanzarModal();
+  }
+
+  reiniciarGuiones(){
+    this.servicioBase.resetListScripts();
     this.lanzarModal();
   }
 
