@@ -1,10 +1,10 @@
-<h2 mat-dialog-title>Base de conocimiento para <strong>{{servicio.nameFlow | lowercase}}</strong>.</h2>
+<h2 mat-dialog-title>Base de conocimiento.</h2>
 <hr style="margin-bottom: 20px;">
 <mat-dialog-content class="mat-typography">
   <div *ngIf="servicio.confirmKnowledge">
     <div *ngFor="let g of servicio.listScripts" style="margin-bottom: 20px;">
-     <h3 style="font-weight: bold">{{g.NAME_KNOWLEDGE}}</h3>
-     <h4 style="text-align: justify;">{{g.VALUE_KNOWLEDGE}}</h4>
+      <h3 style="font-weight: bold">{{g.NAME_KNOWLEDGE}}</h3>
+      <h4 style="text-align: justify;">{{g.VALUE_KNOWLEDGE}}</h4>
     </div>
   </div>
   <div *ngIf="!servicio.confirmKnowledge">

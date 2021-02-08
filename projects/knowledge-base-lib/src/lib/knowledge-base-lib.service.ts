@@ -10,51 +10,61 @@ import { ModalBaseConocimientoComponent } from './modal-base-conocimiento/modal-
 
 export class KnowledgeBaseLibService {
 
-  public nameFlow: string;
-  public messageError: string = 'Cargando base de conocimiento...';
-  public responseKnowledgeBase: RespBase[] = [];
-  public listScripts: RespBase[] = [];
+  protected messageError: string = 'Cargando base de conocimiento...';
+  protected responseKnowledgeBase: RespBase[] = [];
+  protected listScripts: RespBase[] = [];
   public confirmKnowledge: boolean = false;
 
   constructor(
     private http: HttpClient,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
   ) { }
-  postBaseConocimiento(nombreFlujo: string, nombreProceso: string) {
-    const URL = 'http://172.23.3.128:8000/api/KnowledgeBase?strNameFunctionality=' + nombreFlujo + '&strNameProcess=' + nombreProceso;
-    return this.http.post(URL, null);
+
+  private postKnowledgeBase(url: string) {
+    return this.http.post(url, null);
   }
 
-  consumirBaseConocimiento(nombreFlujo: string, nombreProceso: string): void {
+  public fetchKnowledgeBase(url: string, showModal?: boolean): void {
     try {
-      this.nameFlow = nombreFlujo.toLowerCase();
-      this.postBaseConocimiento(nombreFlujo, nombreProceso).subscribe(
+      this.postKnowledgeBase(url).subscribe(
         data => {
-          console.log('Base de conocimiento: ', data);
+          console.log('BASE DE CONOCIMIENTO: ', data);
           this.responseKnowledgeBase = data as RespBase[];
           if (this.responseKnowledgeBase.length > 0) {
             this.listScripts = this.responseKnowledgeBase;
             this.confirmKnowledge = true;
           } else {
             this.confirmKnowledge = false;
-            this.messageError = 'No se encontraron guiones para ' + this.nameFlow + '. Por favor intente de nuevo.';
+            this.messageError = 'No se encontraron guiones de base de conocimiento para la funcionalidad solicitada. Por favor intente de nuevo.';
             this.listScripts = [];
           }
+          if (showModal) {
+            this.openKnowledgeBaseModal();
+          }
         }, error => {
-          this.messageError = 'Ocurrió un problema inesperado al traer los guiones de ' + this.nameFlow + '. Detalle: ' + error.error.Message;
+          console.log('ERROR | BASE DE CONOCIMIENTO WS: ', error);
+          this.messageError = 'No se logró traer los guiones de base de conocimiento para la funcionalidad solicitada. Por favor intente de nuevo.';
           this.confirmKnowledge = false;
-          console.log('Error base de conocimiento: ', error);
-          this.listScripts = [];
+          this.listScripts.push({});
+          const dialogRef = this.dialog.open(ModalBaseConocimientoComponent, {
+            disableClose: true,
+            autoFocus: false,
+          });
         }
       );
     } catch (error) {
-      this.messageError = 'No se logró traer los guiones de ' + this.nameFlow + '. Por favor intente de nuevo.';
+      console.log('ERROR | BASE DE CONOCIMIENTO CATCH: ', error);
+      this.messageError = 'No se logró traer los guiones de base de conocimiento para la funcionalidad solicitada. Por favor intente de nuevo.';
       this.confirmKnowledge = false;
-      this.listScripts = [];
+      this.listScripts.push({});
+      const dialogRef = this.dialog.open(ModalBaseConocimientoComponent, {
+        disableClose: true,
+        autoFocus: false,
+      });
     }
   }
 
-  openKnowledgeBaseModal() {
+  public openKnowledgeBaseModal() {
     return new Promise<boolean>((resolve, reject) => {
       try {
         const dialogRef = this.dialog.open(ModalBaseConocimientoComponent, {
@@ -65,13 +75,17 @@ export class KnowledgeBaseLibService {
           // console.log(`Respuesta base de conocimiento: ${result}`);
           resolve(result);
         });
+        if (!(this.responseKnowledgeBase.length > 0)) {
+          this.confirmKnowledge = false;
+          this.messageError = 'No se han consultado correctamente los guiones de base de conocimiento. Por favor revise la documentación de la librería e intente de nuevo.';
+        }
       } catch (error) {
         reject(error);
       }
     });
   }
 
-  searchByNameScript(nameScript: string): void {
+  public searchByNameScript(nameScript: string): void {
     const guiones = this.responseKnowledgeBase.filter(
       guion => guion.NAME_KNOWLEDGE.toLowerCase().indexOf(nameScript.toLowerCase()) != -1
     )
@@ -85,7 +99,7 @@ export class KnowledgeBaseLibService {
     }
   }
 
-  searchByIdScript(IdScript: number): void {
+  public searchByIdScript(IdScript: number): void {
     const guiones = this.responseKnowledgeBase.filter(
       guion => guion.ID_KNOWLEDGE_BASE == IdScript
     )
@@ -99,14 +113,14 @@ export class KnowledgeBaseLibService {
     }
   }
 
-  resetListScripts() {
+  public resetListScripts() {
     this.listScripts = this.responseKnowledgeBase;
     if (this.listScripts.length > 0) {
       this.confirmKnowledge = true;
       console.log('Guiones reiniciados...');
     } else {
       this.confirmKnowledge = false;
-      this.messageError = 'No se encontraron guiones para ' + this.nameFlow + '.';
+      this.messageError = 'No se encontraron guiones de base de conocimiento para la funcionalidad solicitada.';
       this.openKnowledgeBaseModal();
     }
   }
