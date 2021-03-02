@@ -30,5 +30,10 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableIvy": false
+  },
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
   }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WsSoapLibComponent } from './ws-soap-lib.component';
+import { WsSoapComponent } from './ws-soap-lib.component';
 
-describe('WsSoapLibComponent', () => {
-  let component: WsSoapLibComponent;
-  let fixture: ComponentFixture<WsSoapLibComponent>;
+describe('WsSoapComponent', () => {
+  let component: WsSoapComponent;
+  let fixture: ComponentFixture<WsSoapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WsSoapLibComponent ]
+      declarations: [ WsSoapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WsSoapLibComponent);
+    fixture = TestBed.createComponent(WsSoapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

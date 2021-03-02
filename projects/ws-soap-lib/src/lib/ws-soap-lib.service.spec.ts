@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WsSoapLibService } from './ws-soap-lib.service';
+import { WsSoapService } from './ws-soap-lib.service';
 
-describe('WsSoapLibService', () => {
-  let service: WsSoapLibService;
+describe('WsSoapService', () => {
+  let service: WsSoapService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WsSoapLibService);
+    service = TestBed.inject(WsSoapService);
   });
 
   it('should be created', () => {

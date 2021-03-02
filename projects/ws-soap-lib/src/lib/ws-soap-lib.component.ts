@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ws-soap-lib',
+  selector: 'enl-ws-soap',
   template: `
     <p>
-      ws-soap-lib works!
+      ws-soap works!
     </p>
   `,
   styles: [
   ]
 })
-export class WsSoapLibComponent implements OnInit {
+export class WsSoapComponent implements OnInit {
 
   constructor() { }
 
