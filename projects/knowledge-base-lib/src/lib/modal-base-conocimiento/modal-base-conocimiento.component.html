@@ -15,6 +15,6 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button class="btn-danger btn-peque" mat-button [mat-dialog-close]="false">Cancelar</button>
-  <button class="btn-success btn-peque" mat-button [mat-dialog-close]="true">Confirmar</button>
+  <button *ngIf="servicio.btnOne" class="btn-danger btn-peque" mat-button [mat-dialog-close]="false">Cancelar</button>
+  <button *ngIf="servicio.btnTwo" class="btn-success btn-peque" mat-button [mat-dialog-close]="true">Confirmar</button>
 </mat-dialog-actions>

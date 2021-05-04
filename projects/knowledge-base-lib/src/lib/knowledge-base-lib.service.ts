@@ -14,6 +14,8 @@ export class KnowledgeBaseLibService {
   protected responseKnowledgeBase: RespBase[] = [];
   protected listScripts: RespBase[] = [];
   public confirmKnowledge: boolean = false;
+  protected btnOne = true;
+  protected btnTwo = true;
 
   constructor(
     private http: HttpClient,
@@ -64,7 +66,9 @@ export class KnowledgeBaseLibService {
     }
   }
 
-  public openKnowledgeBaseModal() {
+  public openKnowledgeBaseModal(btnCancelar?: boolean, btnConfirmar?: boolean) {
+    this.btnOne = btnCancelar === false ? btnCancelar : true;
+    this.btnTwo = btnConfirmar === false ? btnConfirmar : true;
     return new Promise<boolean>((resolve, reject) => {
       try {
         const dialogRef = this.dialog.open(ModalBaseConocimientoComponent, {
